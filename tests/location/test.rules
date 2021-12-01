@@ -1,2 +1,5 @@
 alert tcp any any -> any any (msg:"China IP"; flow:established,to_server; geoip:dst,CN; sid:1; rev:1; flowbits:isnotset,china; flowbits:set,china;)
 alert tcp any any -> any any (msg:"German IP"; flow:established,to_server; geoip: dst,DE; sid:2; rev:1; flowbits:isnotset,german; flowbits:set,german;)
+alert tcp any any -> any any (msg:"ANYCAST ADDRESS"; flow:established,to_server; anycast: dst; sid: 3; rev:1; flowbits:isnotset,anycast; flowbits:set,anycast;)
+alert tcp any any -> any any (msg:"ANONYMOUS PROXY"; flow:established,to_server; anonymous-proxy: dst; sid: 4; rev:1; flowbits:isnotset,anonymous-proxy; flowbits:set,anonymous-proxy;)
+alert tcp any any -> any any (msg:"SATELLITE PROVIDER"; flow:established,to_server; satellite-provider: dst; sid: 5; rev:1; flowbits:isnotset,satellite-provider; flowbits:set,satellite-provider;)

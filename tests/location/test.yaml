@@ -5,15 +5,36 @@ requires:
 
 checks:
 
-  # Check that we only have one alert event type in eve.
+  # Check that we only have four events in eve.
   - filter:
-      count: 1
+      count: 4
       match:
         event_type: alert
 
-  # Check alert is the good one
+  # Check if the geoip keyword workded.
   - filter:
       count: 1
       match:
         event_type: alert
         alert.signature_id: 2
+
+  # Check if the anycast keyword worked.
+  - filter:
+      count: 1
+      match:
+        event_type: alert
+        alert.signature_id: 3
+
+  # Check if the anonymous-proxy keyword worked.
+  - filter:
+      count: 1
+      match:
+          event_type: alert
+          alert.signature_id: 4
+
+  # Check if the satellite-provider keyworkd worked.
+  - filter:
+      count: 1
+      match:
+          event_type: alert
+          alert.signature_id: 5
